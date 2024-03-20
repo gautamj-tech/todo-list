@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+  <div class="container">
+    <h1>To Do List</h1>
+    <div class="form-group">
+      <input type="text" id="title" class="form-control" placeholder="Title">
+      <textarea id="description" class="form-control mt-2" placeholder="Description"></textarea>
+      <input type="date" id="endDate" class="form-control mt-2">
+      <button class="btn btn-primary mt-2">Add Item</button>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h3>To Do</h3>
+      </div>
+      <div class="col-md-4">
+        <h3>Doing</h3>
+   
+      </div>
+      <div class="col-md-4">
+        <h3>Done</h3>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
