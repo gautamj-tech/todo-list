@@ -5,31 +5,83 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To Do List</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>To Do List</h1>
-    <div class="form-group">
-      <input type="text" id="title" class="form-control" placeholder="Title">
-      <textarea id="description" class="form-control mt-2" placeholder="Description"></textarea>
-      <input type="date" id="endDate" class="form-control mt-2">
-      <button class="btn btn-primary mt-2">Add Item</button>
+    <div class="sidebar" id="sidebar">
+        <button class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <div class="sidebar-items">
+        <h1>To Do List</h1>
+        <button id="addTaskButton" onclick="showAddModal()" class="add-task-btn"><i class="fas fa-plus"></i> Add New Task</button>
+       </div>
     </div>
-    <div class="row">
-      <div class="col-md-4">
-        <h3>To Do</h3>
-      </div>
-      <div class="col-md-4">
-        <h3>Doing</h3>
-   
-      </div>
-      <div class="col-md-4">
-        <h3>Done</h3>
+    <div class="content">
+      <div class="row">
+        <div class="col-md-4">
+          <h3>To Do</h3>
+          <ul id="todoList" class="list-group task-item">
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Doing</h3>
+          <ul id="doingList" class="list-group">
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Done</h3>
+          <ul id="doneList" class="list-group">
+          </ul>
+        </div>
       </div>
     </div>
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Add Item</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeAddModal()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                  <input type="text" id="title" class="form-control" placeholder="Title">
+                  <textarea id="description" class="form-control mt-2" placeholder="Description"></textarea>
+                  <input type="date" id="endDate" class="form-control mt-2">
+                </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="addItem()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editModalLabel">Edit Item</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeEditModal()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="display: flex;row-gap: 4px; flex-direction: column;">
+              <input type="text" id="editTitle" class="form-control" placeholder="Title">
+              <textarea id="editDescription" class="form-control" placeholder="Description"></textarea>
+              <input type="date" id="editEndDate" class="form-control">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" onclick="saveEditedItem()">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
   </div>
 
   <script src="script.js"></script>
+  <script src="modal.js"></script>
 </body>
 </html>
